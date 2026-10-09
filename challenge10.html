@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 10 - User Interaction</title>
+</head>
+<body>
+    <h1>JavaScript User Interaction</h1>
+    <p>Refresh the page to run the interaction again.</p>
+
+    <script>
+        // Challenge 10: User Interaction HTML Flow
+
+        // 1. Greet the user
+        window.alert("Welcome to our user information page!");
+
+        // 2. Ask for the user's name
+        const nameInput = window.prompt("What is your name?");
+        const userName = nameInput === null || nameInput.trim() === ""
+            ? "Guest"
+            : nameInput.trim();
+
+        // 3. Ask for and validate the user's age
+        const ageInput = window.prompt("How old are you?");
+        const userAge = Number(ageInput);
+
+        if (
+            ageInput === null ||
+            ageInput.trim() === "" ||
+            Number.isNaN(userAge) ||
+            userAge < 1 ||
+            userAge > 120
+        ) {
+            window.alert("Invalid age. Please enter a number between 1 and 120.");
+        } else {
+            // 4. Assign a tier using a ternary
+            const ageTier = userAge < 18
+                ? "Youth"
+                : userAge < 60
+                    ? "Adult"
+                    : "Senior";
+
+            // 5. Ask about newsletter subscription
+            const subscribed = window.confirm(
+                "Do you want to subscribe to our newsletter?"
+            );
+
+            // 6. Display the summary
+            const subscriptionStatus = subscribed ? "Yes" : "No";
+
+            window.alert(
+                "User Summary\n" +
+                "Name: " + userName + "\n" +
+                "Age: " + userAge + "\n" +
+                "Tier: " + ageTier + "\n" +
+                "Newsletter subscription: " + subscriptionStatus
+            );
+        }
+
+        /*
+        Interview questions:
+
+        1. Alert, confirm and prompt are blocking because the browser
+        waits for the user to respond before continuing the script.
+        This can interrupt the user experience in modern web apps.
+
+        2. Modern web apps usually use custom dialogs, forms and
+        accessible interface components instead.
+
+        3. prompt() returns null when the user clicks Cancel.
+        If the user leaves the field blank and clicks OK, it returns
+        an empty string.
+        */
+    </script>
+</body>
+</html>
