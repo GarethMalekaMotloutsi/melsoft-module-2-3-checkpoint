@@ -770,3 +770,54 @@ console.log("Discount:", fixedCartDiscountAmount.toFixed(2));
 console.log("VAT:", fixedCartVat.toFixed(2));
 console.log("Senior discount:", fixedCartSeniorDiscount.toFixed(2));
 console.log("Final total: R" + fixedCartFinalTotal.toFixed(2));
+
+
+
+// Challenge 12: Self-Reflection
+
+/*
+1. The most important thing I learned is that JavaScript can
+   automatically convert values between types. For example,
+   adding strings can join them together instead of adding
+   their numeric values. This showed me why I need to check
+   data types before doing calculations.
+
+2. Strict equality (===) is safer than loose equality (==)
+   because it compares both the value and the type. For example,
+   5 == "5" returns true, but 5 === "5" returns false. Using
+   loose equality can make a condition pass when the types
+   do not match.
+
+3. I would use ?? when zero, false or an empty string are valid
+   values and I only want a default for null or undefined.
+   For example, 0 || 18 returns 18, but 0 ?? 18 returns 0.
+   This matters when zero is a valid age, count or amount.
+
+4. typeof null returns "object" because of a historical issue
+   in JavaScript that was kept for compatibility. To check
+   whether a value is specifically null, I would use
+   value === null instead of relying on typeof.
+
+5. Forgetting to convert a value could cause a problem when
+   calculating a customer's shopping total. If a price comes
+   from a form as a string, adding it to another string could
+   join the values instead of adding the prices correctly.
+
+6. JavaScript uses floating-point numbers, so 0.1 + 0.2 can
+   produce 0.30000000000000004 instead of exactly 0.3.
+   Formatting a number to two decimal places helps when
+   displaying money, but does not fix every calculation.
+   A real banking system can store amounts in integer cents
+   or use decimal arithmetic to handle money accurately.
+
+7. The operators & and | work on individual bits, while &&
+   and || use truthy and falsy values for logical conditions.
+   Confusing them in a permission check could give the wrong
+   result and allow or deny access incorrectly.
+
+8. The hardest concept for me was understanding type coercion
+   and operator precedence together. Working through examples
+   and checking the output helped me understand why JavaScript
+   sometimes gives results that are different from what I
+   first expected.
+*/
