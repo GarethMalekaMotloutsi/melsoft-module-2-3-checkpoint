@@ -123,3 +123,83 @@ value used when a calculation or conversion fails.
     leaves a price or quantity field empty, because the empty input
     may be treated as zero instead of being rejected as missing.
  */
+
+
+
+
+    
+ // Challenge 3: Operators Masterclass
+
+ // 1. Arithmetic: calculate monthly net salary
+ const grossSalary = 45000;
+ const paye = grossSalary * 0.25;
+ const uif = grossSalary * 0.01;
+ const medicalAid = 2500;
+ const netSalary = grossSalary - paye - uif - medicalAid;
+
+ console.log("Net salary: R", netSalary);
+ console.log("Remaining cents after division:", netSalary % 100);
+
+ // 2. Assignment: calculate a shopping cart total
+ let cartTotal = 0;
+ cartTotal += 150;
+ cartTotal += 85;
+ cartTotal += 220;
+ cartTotal *= 0.90;
+ cartTotal *= 1.15;
+
+ console.log("Shopping cart total: R", cartTotal.toFixed(2));
+
+ // 3. Comparison: check signup details
+ const signupAge = 25;
+ const password = "myPassword123";
+ const typedEmail = "gareth@example.com";
+ const confirmedEmail = "gareth@example.com";
+
+ const validSignup =
+     signupAge >= 18 &&
+     password.length >= 8 &&
+     typedEmail === confirmedEmail;
+
+ console.log("Signup valid:", validSignup);
+
+ // 4. Logical: check access to the premium dashboard
+ const isLoggedIn = true;
+ const emailVerified = true;
+ const isAdmin = false;
+
+ const canAccessPremium = (isLoggedIn && emailVerified) || isAdmin;
+ console.log("Premium access:", canAccessPremium);
+
+ // 5. Unary: convert text to a number and toggle dark mode
+ const formAge = "25";
+ const numericAge = +formAge;
+ let isDarkMode = false;
+ isDarkMode = !isDarkMode;
+
+ console.log("Numeric age:", numericAge);
+ console.log("Dark mode enabled:", isDarkMode);
+
+ // 6. Ternary: display a membership badge
+ const membershipType = "premium";
+ const membershipBadge = membershipType === "premium"
+     ? "Premium Member"
+     : membershipType === "trial"
+         ? "Trial Member"
+         : "Free Member";
+
+ console.log("Membership:", membershipBadge);
+
+ // 7. String concatenation and template literals
+ const customerName = "Thabo Nkosi";
+ const customerAge = 28;
+
+ const greetingWithPlus =
+     "Welcome back " + customerName + ", you are " +
+     customerAge + " years old.";
+
+ const greetingWithTemplate =
+     `Welcome back ${customerName}, you are ${customerAge} years old.`;
+
+ console.log(greetingWithPlus);
+ console.log(greetingWithTemplate);
