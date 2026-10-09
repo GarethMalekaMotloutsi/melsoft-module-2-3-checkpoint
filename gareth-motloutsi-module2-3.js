@@ -105,3 +105,21 @@ value used when a calculation or conversion fails.
  console.log('"abc" - 1:', "abc" - 1, typeof ("abc" - 1));
  console.log("[] + []:", [] + [], typeof ([] + []));
  console.log("[1] + [2]:", [1] + [2], typeof ([1] + [2]));
+
+
+ 
+ // Part C: Type conversion questions
+
+ /*
+ 1. Number("42abc") returns NaN because the whole string cannot
+    be converted into a number. parseInt("42abc") returns 42
+    because it reads the integer at the start of the string.
+
+ 2. parseFloat is useful when working with decimal values, such
+    as prices. Using parseInt on a price like "49.95" would give
+    49 instead of 49.95, which could cause an incorrect calculation.
+
+ 3. Number("") returns 0. This can cause a bug in a form if a user
+    leaves a price or quantity field empty, because the empty input
+    may be treated as zero instead of being rejected as missing.
+ */
