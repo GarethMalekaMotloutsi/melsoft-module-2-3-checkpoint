@@ -614,3 +614,159 @@ minor units, such as cents, or handled using decimal arithmetic,
 rather than relying on floating-point values for exact money amounts.
 */
 
+
+
+
+ // Challenge 11: Bug Hunt
+
+console.log("\nChallenge 11: Bug Hunt");
+
+// Junior developer's cart script
+// The bugs will be explained and corrected below.
+
+var cartItem1Price = "199.99";
+var cartItem2Price = "49.50";
+var cartItem3Price = 125;
+var cartQuantity = "2";
+var cartDiscountCode = "SAVE10";
+var cartIsLoggedIn = "true";
+var cartCustomerAge = null;
+
+var cartSubtotal =
+    cartItem1Price + cartItem2Price + cartItem3Price * cartQuantity;
+
+console.log("Subtotal:", cartSubtotal);
+
+var cartDiscount = cartDiscountCode == "SAVE10" ? 0.1 : 0;
+
+var cartDiscountAmount = cartSubtotal * cartDiscount;
+var cartAfterDiscount = cartSubtotal - cartDiscountAmount;
+var cartVat = cartAfterDiscount * 0.15;
+var cartFinalCartTotal = cartAfterDiscount + cartVat;
+
+var cartCanCheckout =
+    cartIsLoggedIn && cartCustomerAge > 18;
+
+console.log("Can checkout?", cartCanCheckout);
+
+var cartSeniorDiscount =
+    cartCustomerAge >= 60 ? cartFinalCartTotal * 0.05 : null;
+
+var cartFinalTotal = cartFinalCartTotal - cartSeniorDiscount;
+
+console.log("Total: R" + cartFinalTotal.toFixed(2));
+
+
+ // Challenge 11: Bug explanations
+
+/*
+1. Faulty line: var cartItem1Price = "199.99";
+   The price is stored as a string instead of a number, which can
+   cause unexpected results when doing calculations.
+
+2. Faulty line: var cartItem2Price = "49.50";
+   This price is also a string and should be converted to a number
+   before it is used in arithmetic.
+
+3. Faulty line: var cartQuantity = "2";
+   The quantity is stored as a string instead of a numeric value.
+
+4. Faulty line: var cartIsLoggedIn = "true";
+   The value is a non-empty string, not a boolean, so it is truthy
+   even though it does not contain the boolean value true.
+
+5. Faulty line: var cartCustomerAge = null;
+   A null age means the age is unknown, but the script continues
+   using it in comparisons and calculations.
+
+6. Faulty line: var cartSubtotal =
+       cartItem1Price + cartItem2Price + cartItem3Price * cartQuantity;
+   The expression combines strings and numbers, so the addition
+   can perform string concatenation instead of normal addition.
+
+7. Faulty line: var cartDiscount = cartDiscountCode == "SAVE10" ? 0.1 : 0;
+   Loose equality can convert values automatically; strict equality
+   (===) is safer when checking the discount code.
+
+8. Faulty line: var cartDiscountAmount = cartSubtotal * cartDiscount;
+   If the subtotal is an incorrectly concatenated string, converting
+   it during multiplication can produce an incorrect discount.
+
+9. Faulty line: var cartCanCheckout =
+       cartIsLoggedIn && cartCustomerAge > 18;
+   The login check relies on a truthy string, and the age is unknown,
+   so the script does not properly validate the customer's details.
+
+10. Faulty line: var cartSeniorDiscount =
+        cartCustomerAge >= 60 ? cartFinalCartTotal * 0.05 : null;
+    The script uses an unknown age to decide whether the customer
+    qualifies for a senior discount.
+
+11. Faulty line: var cartFinalTotal =
+        cartFinalCartTotal - cartSeniorDiscount;
+    If the senior discount is null, subtraction automatically
+    converts null to zero, hiding the missing-value problem.
+
+12. Faulty line: console.log("Total: R" + cartFinalTotal.toFixed(2));
+    Formatting the final value to two decimal places does not fix
+    incorrect calculations that happened earlier.
+*/
+
+
+
+
+
+
+ // Corrected shopping-cart script
+
+console.log("\nChallenge 11: Corrected Shopping Cart");
+
+// Convert prices and quantity into numbers
+const fixedCartItem1Price = Number("199.99");
+const fixedCartItem2Price = Number("49.50");
+const fixedCartItem3Price = 125;
+const fixedCartQuantity = Number("2");
+
+const fixedCartDiscountCode = "SAVE10";
+const fixedCartIsLoggedIn = true;
+const fixedCartCustomerAge = 30;
+
+// Calculate the subtotal before applying discounts
+const fixedCartSubtotal =
+    (fixedCartItem1Price + fixedCartItem2Price + fixedCartItem3Price) *
+    fixedCartQuantity;
+
+console.log("Subtotal: R" + fixedCartSubtotal.toFixed(2));
+
+// Check the discount code using strict equality
+const fixedCartDiscount =
+    fixedCartDiscountCode === "SAVE10" ? 0.10 : 0;
+
+const fixedCartDiscountAmount =
+    fixedCartSubtotal * fixedCartDiscount;
+
+const fixedCartAfterDiscount =
+    fixedCartSubtotal - fixedCartDiscountAmount;
+
+const fixedCartVat = fixedCartAfterDiscount * 0.15;
+const fixedCartTotal = fixedCartAfterDiscount + fixedCartVat;
+
+// Check login and age using valid data
+const fixedCartCanCheckout =
+    fixedCartIsLoggedIn && fixedCartCustomerAge > 18;
+
+console.log("Can checkout?", fixedCartCanCheckout);
+
+// Apply a senior discount only when the age is known
+const fixedCartSeniorDiscount =
+    fixedCartCustomerAge !== null && fixedCartCustomerAge >= 60
+        ? fixedCartTotal * 0.05
+        : 0;
+
+const fixedCartFinalTotal =
+    fixedCartTotal - fixedCartSeniorDiscount;
+
+console.log("Discount:", fixedCartDiscountAmount.toFixed(2));
+console.log("VAT:", fixedCartVat.toFixed(2));
+console.log("Senior discount:", fixedCartSeniorDiscount.toFixed(2));
+console.log("Final total: R" + fixedCartFinalTotal.toFixed(2));
