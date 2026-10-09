@@ -492,3 +492,125 @@ console.log("SUPER_ADMIN permission:", SUPER_ADMIN);
    values. Confusing them can produce incorrect permission checks.
 */
 
+
+
+ // Challenge 9: Payroll and Banking Calculator
+
+console.log("\nChallenge 9: Payroll and Banking Calculator");
+
+// Scenario 1: Payroll processor
+
+const payrollGrossSalary = 45000;
+const payrollPaye = payrollGrossSalary * 0.25;
+const payrollUif = Math.min(payrollGrossSalary * 0.01, 177.12);
+const payrollMedicalAid = 2500;
+const pension = payrollGrossSalary * 0.075;
+
+const totalDeductions =
+    payrollPaye + payrollUif + payrollMedicalAid + pension;
+
+const payrollNetSalary = payrollGrossSalary - totalDeductions;
+
+// Format amounts with commas and two decimal places
+function formatRand(amount) {
+    return "R " + amount.toLocaleString("en-ZA", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+console.log("\nScenario 1: Payroll");
+console.log("Gross salary:", formatRand(payrollGrossSalary));
+console.log("PAYE:", formatRand(payrollPaye));
+console.log("UIF:", formatRand(payrollUif));
+console.log("Medical aid:", formatRand(payrollMedicalAid));
+console.log("Pension:", formatRand(pension));
+console.log("Total deductions:", formatRand(totalDeductions));
+console.log("Net salary:", formatRand(payrollNetSalary));
+
+// Simulate salary input from a form
+const grossSalaryInput = "45000";
+const convertedSalary = Number(grossSalaryInput);
+
+if (!Number.isNaN(convertedSalary) && convertedSalary > 0) {
+    console.log("Validated salary:", formatRand(convertedSalary));
+} else {
+    console.log("Invalid salary input");
+}
+
+// Scenario 2: Compound interest savings
+
+const principal = 25000;
+const annualRate = 0.075;
+const compoundsPerYear = 12;
+const years = 3;
+
+const finalBalance = principal *
+    (1 + annualRate / compoundsPerYear) **
+    (compoundsPerYear * years);
+
+const interestEarned = finalBalance - principal;
+
+const effectiveAnnualRate =
+    ((1 + annualRate / compoundsPerYear) ** compoundsPerYear - 1) * 100;
+
+// Monthly fee based on account balance
+function getMonthlyFee(balance) {
+    return balance < 1000 ? 25
+        : balance < 5000 ? 50
+        : balance < 25000 ? 75
+        : 0;
+}
+
+console.log("\nScenario 2: Compound Interest");
+console.log("Starting deposit:", formatRand(principal));
+console.log("Final balance:", formatRand(finalBalance));
+console.log("Interest earned:", formatRand(interestEarned));
+console.log("Effective annual rate:", effectiveAnnualRate.toFixed(2) + "%");
+
+const testBalances = [500, 1500, 10000, 50000];
+
+for (const balance of testBalances) {
+    const monthlyFee = getMonthlyFee(balance);
+    const annualFee = monthlyFee * 12;
+
+    console.log("\nBalance:", formatRand(balance));
+    console.log("Monthly fee:", formatRand(monthlyFee));
+    console.log("Annual fee:", formatRand(annualFee));
+}
+
+// Scenario 3: Multi-currency transfer
+
+const transferAmount = 15750.33;
+const exchangeRate = 18.42;
+const commissionRate = 0.025;
+
+const commission = transferAmount * commissionRate;
+const amountAfterCommission = transferAmount - commission;
+const usdReceived = amountAfterCommission / exchangeRate;
+
+console.log("\nScenario 3: Multi-Currency Transfer");
+console.log("Original ZAR amount:", formatRand(transferAmount));
+console.log("Commission:", formatRand(commission));
+console.log("Amount after commission:", formatRand(amountAfterCommission));
+
+console.log(
+    "USD received: $" + usdReceived.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })
+);
+
+// Floating-point precision explanation
+
+/*
+JavaScript numbers use floating-point arithmetic, so calculations
+such as 0.1 + 0.2 can produce 0.30000000000000004 instead of
+exactly 0.3.
+
+I format currency to two decimal places when displaying the results.
+For real banking systems, amounts are commonly stored as integer
+minor units, such as cents, or handled using decimal arithmetic,
+rather than relying on floating-point values for exact money amounts.
+*/
+
