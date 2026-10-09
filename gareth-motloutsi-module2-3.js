@@ -203,3 +203,24 @@ value used when a calculation or conversion fails.
 
  console.log(greetingWithPlus);
  console.log(greetingWithTemplate);
+
+
+
+
+ // Written questions
+
+ /*
+ 1. Prefix and postfix:
+    With ++x, the value increases before it is used in an expression.
+    With x++, the current value is used first, then it increases.
+
+ 2. Uses of modulo:
+    - Checking if a number is even or odd.
+    - Finding the remainder when splitting items into equal groups.
+    - Running a task at regular intervals, such as every fifth order.
+
+ 3. Nested ternaries:
+    They can be useful for short conditions, but too many make code
+    difficult to read. For more complicated decisions, I would use
+    if...else statements because each condition is easier to follow.
+ */
