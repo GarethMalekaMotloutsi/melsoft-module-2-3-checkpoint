@@ -224,3 +224,45 @@ value used when a calculation or conversion fails.
     difficult to read. For more complicated decisions, I would use
     if...else statements because each condition is easier to follow.
  */
+
+
+
+// Challenge 4: Equality and Comparison Operators
+
+// Part A: Loose equality vs strict equality
+
+console.log("\nChallenge 4: Equality and Comparison Operators");
+
+console.log('5 == "5":', 5 == "5");
+console.log('5 === "5":', 5 === "5");
+console.log('0 == false:', 0 == false);
+console.log('0 === false:', 0 === false);
+console.log('"" == false:', "" == false);
+console.log('"" === false:', "" === false);
+console.log('null == undefined:', null == undefined);
+console.log('null === undefined:', null === undefined);
+
+// Part B: Comparison operators
+
+const firstNumber = 10;
+const secondNumber = 20;
+
+console.log("10 > 20:", firstNumber > secondNumber);
+console.log("10 < 20:", firstNumber < secondNumber);
+console.log("10 >= 10:", firstNumber >= 10);
+console.log("20 <= 10:", secondNumber <= 10);
+
+// Part C: Written explanation
+
+/*
+Loose equality (==) compares values after JavaScript may convert
+their types. Strict equality (===) compares both the value and
+the type without doing that conversion.
+
+For example, 5 == "5" is true because the string can be converted
+to the number 5. However, 5 === "5" is false because one value is
+a number and the other is a string.
+
+Strict equality is usually safer because it avoids unexpected
+results caused by automatic type conversion.
+*/
