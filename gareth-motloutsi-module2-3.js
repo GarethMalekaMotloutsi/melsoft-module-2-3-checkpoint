@@ -302,3 +302,65 @@ is the same as 2 ** (3 ** 2), which gives 512.
 Brackets make expressions easier to understand and help avoid
 mistakes when calculating more complicated expressions.
 */
+
+
+
+
+
+ // Challenge 6: Ternary and Short-Circuit Evaluation
+
+console.log("\nChallenge 6: Ternary and Short-Circuit Evaluation");
+
+// Part A: Ternary operator
+
+const ageForEntry = 20;
+
+const entryMessage = ageForEntry >= 18
+    ? "Entry allowed"
+    : "Entry denied";
+
+console.log("Entry message:", entryMessage);
+
+// Part B: Short-circuit evaluation with &&
+
+const loggedIn = true;
+const hasPermission = true;
+
+const dashboardAccess = loggedIn && hasPermission;
+
+console.log("Dashboard access:", dashboardAccess);
+
+// Part C: Short-circuit evaluation with ||
+
+const username = "";
+
+const displayName = username || "Guest";
+
+console.log("Display name:", displayName);
+
+// Part D: Short-circuit evaluation with ??
+
+const userAge = 0;
+
+const ageDisplay = userAge ?? 18;
+
+console.log("Age display:", ageDisplay);
+
+// Part E: Written explanation
+
+/*
+The ternary operator checks a condition and returns one of two
+values. It is useful for simple decisions.
+
+The && operator returns the second value if the first value is
+truthy. If the first value is falsy, it stops and returns that
+first value.
+
+The || operator returns the second value when the first value
+is falsy. It can be used to provide a default value, such as
+displaying Guest when no username was entered.
+
+The ?? operator only uses the default value when the first value
+is null or undefined. In this example, userAge is 0, so ageDisplay
+remains 0 instead of changing to 18.
+*/
