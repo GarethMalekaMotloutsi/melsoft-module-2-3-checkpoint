@@ -266,3 +266,39 @@ a number and the other is a string.
 Strict equality is usually safer because it avoids unexpected
 results caused by automatic type conversion.
 */
+
+
+ // Challenge 5: Operator Precedence
+
+console.log("\nChallenge 5: Operator Precedence");
+
+// Part A: Expressions without brackets
+
+console.log("10 + 5 * 2 =", 10 + 5 * 2);
+console.log("20 / 4 + 3 =", 20 / 4 + 3);
+console.log("10 - 3 + 2 =", 10 - 3 + 2);
+console.log("2 ** 3 ** 2 =", 2 ** 3 ** 2);
+
+// Part B: Expressions with brackets
+
+console.log("(10 + 5) * 2 =", (10 + 5) * 2);
+console.log("20 / (4 + 3) =", 20 / (4 + 3));
+console.log("10 - (3 + 2) =", 10 - (3 + 2));
+console.log("(2 ** 3) ** 2 =", (2 ** 3) ** 2);
+
+// Part C: Written explanation
+
+/*
+Operator precedence determines which operation is evaluated first
+when an expression contains different operators.
+
+For example, 10 + 5 * 2 gives 20 because multiplication happens
+before addition. Adding brackets changes the result:
+(10 + 5) * 2 gives 30 because the addition happens first.
+
+Exponentiation is evaluated from right to left, so 2 ** 3 ** 2
+is the same as 2 ** (3 ** 2), which gives 512.
+
+Brackets make expressions easier to understand and help avoid
+mistakes when calculating more complicated expressions.
+*/
