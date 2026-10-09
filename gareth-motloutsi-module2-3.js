@@ -68,3 +68,40 @@ that was kept for compatibility.
 typeof NaN returns "number" because NaN is a special numeric
 value used when a calculation or conversion fails.
 */
+
+
+
+
+
+ // Challenge 2: Type Conversion Workshop
+
+ // Part A: Explicit conversion
+
+ const values = ["123", "3.14", "hello", "42abc", "", 0, null, undefined];
+
+ for (const value of values) {
+     console.log("\nValue:", value);
+     console.log("Number:", Number(value), typeof Number(value));
+     console.log("parseInt:", parseInt(value), typeof parseInt(value));
+     console.log("parseFloat:", parseFloat(value), typeof parseFloat(value));
+     console.log("Boolean:", Boolean(value), typeof Boolean(value));
+     console.log("String:", String(value), typeof String(value));
+ }
+
+ 
+ // Part B: Implicit type coercion
+
+ console.log("\nPart B: Implicit type coercion");
+
+ console.log('"5" + 3:', "5" + 3, typeof ("5" + 3));
+ console.log('"5" - 3:', "5" - 3, typeof ("5" - 3));
+ console.log('"5" * "2":', "5" * "2", typeof ("5" * "2"));
+ console.log("true + 1:", true + 1, typeof (true + 1));
+ console.log('true + "1":', true + "1", typeof (true + "1"));
+ console.log("false + null:", false + null, typeof (false + null));
+ console.log("null + undefined:", null + undefined, typeof (null + undefined));
+ console.log("1 / 0:", 1 / 0, typeof (1 / 0));
+ console.log("0 / 0:", 0 / 0, typeof (0 / 0));
+ console.log('"abc" - 1:', "abc" - 1, typeof ("abc" - 1));
+ console.log("[] + []:", [] + [], typeof ([] + []));
+ console.log("[1] + [2]:", [1] + [2], typeof ([1] + [2]));
