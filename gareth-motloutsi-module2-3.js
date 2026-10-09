@@ -364,3 +364,58 @@ The ?? operator only uses the default value when the first value
 is null or undefined. In this example, userAge is 0, so ageDisplay
 remains 0 instead of changing to 18.
 */
+
+
+
+ // Challenge 7: typeof, instanceof and delete
+
+console.log("\nChallenge 7: typeof, instanceof and delete");
+
+// Part A: typeof
+
+const studentName = "Gareth";
+const studentAge = 28;
+const studentSubjects = ["JavaScript", "HTML", "CSS"];
+
+console.log("typeof studentName:", typeof studentName);
+console.log("typeof studentAge:", typeof studentAge);
+console.log("typeof studentSubjects:", typeof studentSubjects);
+
+// Part B: instanceof
+
+console.log("studentSubjects instanceof Array:", studentSubjects instanceof Array);
+console.log("studentName instanceof String:", studentName instanceof String);
+
+const currentDate = new Date();
+
+console.log("currentDate instanceof Date:", currentDate instanceof Date);
+
+// Part C: delete
+
+const student = {
+    name: "Gareth",
+    age: 28,
+    course: "JavaScript"
+};
+
+console.log("Before delete:", student);
+
+delete student.course;
+
+console.log("After delete:", student);
+console.log("Course property exists:", "course" in student);
+
+// Part D: Written explanation
+
+/*
+The typeof operator returns the type of a value. For example,
+typeof "Gareth" returns "string", while typeof 28 returns "number".
+
+The instanceof operator checks whether an object was created
+from a particular constructor. For example, an array created
+with [] is an instance of Array.
+
+The delete operator removes a property from an object. In this
+example, delete student.course removes the course property.
+It does not delete the whole student object.
+*/
